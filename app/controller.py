@@ -1,18 +1,22 @@
-from flask import render_template #request
+from flask import render_template, request
 from app import app
-from app.models.event_class import *
-#from app.models.task import *
+from app.models.event_class import Event
+from app.models.event_list import events, add_new_event
 
 
 @app.route('/')
 def index():
     #return "hello world"
-    return render_template('index.html', title ='Home ')
+    return render_template('index.html', title ='Home ', events = events)
 
-# @app.route('/add-task', methods = ['POST'])
-# def add_task():
-#     task_title = request.form['title']
-#     task_desc = request.form['description']
-#     new_task = Task(task_title, task_desc, False)
-#     add_new_task(new_task)
-#     return render_template('index.html', title = 'Home', tasks = tasks)
+@app.route('/add-event', methods = ['POST'])
+def add_event():
+    event_date = request.form["date"]
+    event_name = request.form["name"]
+    event_desc = request.form['description']
+    event_location = request.form["room_location"]
+    num_guest = request.form["number_of_guests"]
+    new_event = Event(event_date, event_name, event_desc, event_location, num_guest )
+    add_new_event(new_event)
+    return render_template('index.html', title = 'Home', events = events)
+    
