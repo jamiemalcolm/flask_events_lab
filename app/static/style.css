@@ -1,0 +1,48 @@
+
+
+body {
+    background-color: #CAD2C5;
+}
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+    "nav-bar nav-bar"
+    "heading heading"
+    "form-div event";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+}
+body > ul {
+    background-color: #52796F !important;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 5px;
+    grid-area: "nav-bar";
+
+}
+
+h1 {
+    grid-area:  "heading";
+    color: #354f52;
+}
+
+
+
+body > ul > li > a {
+    color: white;
+    list-style: none;
+}
+
+
+.form_div {
+    background-color: #84A98C;
+    grid-area: "form_div";
+}
+
+.event {
+    grid-area: "event";
+}
+
+
+

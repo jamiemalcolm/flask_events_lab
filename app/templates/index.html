@@ -2,22 +2,27 @@
 
 {% block content %}
 <h1>Upcoming Events</h1>
-<form action="/add-event" method="post">
-    <!-- ADDED -->
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name">
-    <label for="date">Date</label>
-    <input type="text" name="date" id="date" value="dd/mm/yyyy">
-    <label for="number_of_guests">Number of Guests</label>
-    <input type="text" name="number_of_guests" id="number_of_guests">
-    <label for="room_location">Room Location</label>
-    <input type="text" name="room_location" id="room_location">
-    <label for="description">Description</label>
-    <textarea name="description" rows="2" cols="30"></textarea>
-    <input type="submit" value="Add Event">
-</form>
+<div class="form_div">
+    <form action="/add-event" method="post">
+        <!-- ADDED -->
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+        <label for="date">Date</label>
+        <input type="datetime-local" name="date" id="date" value="dd/mm/yyyy">
+        <label for="number_of_guests">Number of Guests</label>
+        <input type="number" name="number_of_guests" id="number_of_guests">
+        <label for="room_location">Room Location</label>
+        <input type="text" name="room_location" id="room_location">
+        <label for="description">Description</label>
+        <textarea name="description" rows="2" cols="30"></textarea>
+        <label for='recurring'>Is this event recurring?</label>
+        <input type="checkbox" name="recurring" value="Recurring?">
+        <input type="submit" value="Add Event">
+    </form>
+</div>
+
 {% for event in events %}
-<div>
+<div class="event">
     <ul>
         <li> {{ event.name_of_event }}
         </li>
@@ -25,7 +30,15 @@
         <li>{{event.date}} </li>
         <li>{{event.number_of_guests}}</li>
         <li>{{event.room_location}}</li>
+        {% if event.recurring %}
+        <li>This event if recurring</li>
+        {% else %}
+        <li>This event is a one off!</li>
+        {% endif %}
+
+
     </ul>
+
 </div>
 {% endfor %}
 
