@@ -38,10 +38,22 @@ body > ul > li > a {
 .form_div {
     background-color: #84A98C;
     grid-area: "form_div";
+    border-radius: 5px;
+    color: #2F3E46;
 }
 
+input, textarea {
+    background-color: #84A98C;
+    color: #2F3E46;
+    font-weight: bold;
+}
 .event {
     grid-area: "event";
+    background-color: #2F3E46;
+    color: #52796F;
+    padding: 10px;
+    margin: 5px 5px 5px 5px;
+    border-radius: 5px;
 }
 
 
